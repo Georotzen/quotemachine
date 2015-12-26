@@ -1,6 +1,6 @@
 .container {
   text-align: center;
-  width: 50%;
+  width: 75%;
   margin-top: 75px;
   margin-bottom: 100px;
 }
@@ -21,5 +21,5 @@
   background: black;
   color: white;
   font-size: 20px;
-  maring-bottom: 50px;
+  margin-bottom: 50px;
 }
