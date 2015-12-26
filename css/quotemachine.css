@@ -23,3 +23,10 @@
   font-size: 20px;
   margin-bottom: 50px;
 }
+
+#authorThumb {
+  height: 120px;
+  width: 120px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
