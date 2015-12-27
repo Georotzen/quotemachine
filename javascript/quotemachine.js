@@ -1,8 +1,9 @@
 var quote;
 var author;
 var wikiThumb;
+var wikiThumbPlaceholder = "https://raw.githubusercontent.com/ShaggyTech/quotemachine/master/img/person-placeholder.png";
 
-function parseQuote(response){
+function parseQuote(response) {
   quote = response.quoteText;
   author = response.quoteAuthor;
 
@@ -12,12 +13,9 @@ function parseQuote(response){
     author = "Unknown Author";
   }
 
-
-
   $("#quote").html(quote);
   $("#author").html(author);
 }
-
 
 function requestQuote() {
   $.ajax({
@@ -35,36 +33,35 @@ function getWikiThumbnail(name) {
       format: 'json'
     },
     dataType: 'jsonp'
-  }).done( function ( data ) {
+  }).done(function(data) {
     //console.log(JSON.stringify(data, undefined, 2));
 
     var pages = data.query.pages;
-    
+
     for (var id in pages) {
       var thumbnail = pages[id].thumbnail;
       if (thumbnail) {
-          wikiThumb = thumbnail.source;
+        wikiThumb = thumbnail.source;
       }
     }
-    
+
     if (wikiThumb) {
       $("#authorThumb").html("<img src=" + wikiThumb + ">");
       console.log(wikiThumb);
     } else {
-      $("#authorThumb").html("");
+      $("#authorThumb").html("<img src=" + wikiThumbPlaceholder + ">");
     }
 
   });
 }
 
-
 function newQuote() {
-  $("#newQuote").click(function(){
+  $("#newQuote").click(function() {
     requestQuote();
   });
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
   newQuote();
   getWikiThumbnail();
 });
