@@ -64,4 +64,10 @@ function newQuote() {
 $(document).ready(function() {
   newQuote();
   getWikiThumbnail();
+  $('.btn').mouseup(function() {
+    this.blur()
+  });
+  $('.btn').mousedown(function() {
+    this.blur()
+  });
 });
