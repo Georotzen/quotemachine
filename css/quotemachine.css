@@ -45,7 +45,7 @@ body {
 
 .main {
   font-size: 20px;
-  padding-top: 20px;
+  padding: 20px;
   margin-bottom: 50px;
 }
 
@@ -60,6 +60,13 @@ body {
   margin: 0 auto;
   border-radius: 50%;
   border: 2px solid white;
+}
+
+.author-wiki {
+  height: 125px;
+  width: 125px;
+  border: 10px solid #3D5695;
+  border-radius: 50%;
 }
 
 #newQuote {

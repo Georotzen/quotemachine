@@ -1,6 +1,8 @@
 var quote;
 var author;
 var wikiThumb;
+var wikiAuthor;
+var wikiUrl;
 var wikiThumbPlaceholder = "https://raw.githubusercontent.com/ShaggyTech/quotemachine/master/img/person-placeholder.png";
 
 function parseQuote(response) {
@@ -26,9 +28,10 @@ function requestQuote() {
 
 function getWikiThumbnail(name) {
   wikiThumb = "";
+  wikiUrl = "";
 
   $.ajax({
-    url: '//en.wikipedia.org/w/api.php?action=query&titles=' + name + '&prop=pageimages&piprop=thumbnail&format=jsonty&pithumbsize=100&callback=?',
+    url: '//en.wikipedia.org/w/api.php?action=query&titles=' + name + '&prop=pageimages|info&piprop=thumbnail&inprop=url&format=jsonty&pithumbsize=100&callback=?',
     data: {
       format: 'json'
     },
@@ -40,13 +43,15 @@ function getWikiThumbnail(name) {
 
     for (var id in pages) {
       var thumbnail = pages[id].thumbnail;
+      var fullUrl = pages[id].fullurl;
       if (thumbnail) {
-        wikiThumb = thumbnail.source;
+        wikiThumb = thumbnail.source; 
+        wikiUrl = fullUrl;
       }
     }
 
     if (wikiThumb) {
-      $("#authorThumb").html("<img src=" + wikiThumb + ">");
+      $("#authorThumb").html("<a href=" + wikiUrl + " target='_blank'><img src=" + wikiThumb + "></a>");
       console.log(wikiThumb);
     } else {
       $("#authorThumb").html("<img src=" + wikiThumbPlaceholder + ">");
