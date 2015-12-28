@@ -9,24 +9,49 @@ function parseQuote(response) {
     quote = response.quoteText;
     author = response.quoteAuthor;
 
+    $("#wikiLink").removeClass("disabled")
+
     if (author != "") {
-        getWikiThumbnail(author);
+        getWiki(author);
     } else {
         author = "Unknown Author";
+        $("#authorThumb").html("<img src=" + wikiThumbPlaceholder + ">");
+        $("#wikiLink").attr("href", "#").addClass("disabled");
     }
 
     $("#quote").html('<i class="fa fa-quote-right fa-1x"></i>' + quote + '<i class="fa fa-quote-right fa-1x"></i>');
     $("#author").html(author);
 }
 
-function requestQuote() {
+function getQuote() {
     $.ajax({
         dataType: "jsonp",
         url: "http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=parseQuote",
     })
 }
 
-function getWikiThumbnail(name) {
+function parseWiki(pages) {
+    for (var id in pages) {
+        var thumbnail = pages[id].thumbnail;
+        var fullUrl = pages[id].fullurl;
+        if (thumbnail) {
+            wikiThumb = thumbnail.source;
+            wikiUrl = fullUrl;
+        }
+    }
+
+    if (wikiThumb && wikiUrl) {
+        $("#authorThumb").html("<a href=" + wikiUrl + " target='_blank'><img src=" + wikiThumb + "></a>");
+        $("#wikiLink").attr("href", wikiUrl);
+    } else if (wikiUrl) {
+        $("wikiLink").attr("href", wikiUrl);
+    } else {
+        $("#authorThumb").html("<img src=" + wikiThumbPlaceholder + ">");
+        $("#wikiLink").attr("href", "#").addClass("disabled");
+    }
+}
+
+function getWiki(name) {
     wikiThumb = "";
     wikiUrl = "";
 
@@ -38,41 +63,36 @@ function getWikiThumbnail(name) {
         dataType: 'jsonp'
     }).done(function(data) {
         //console.log(JSON.stringify(data, undefined, 2));
-
         var pages = data.query.pages;
-
-        for (var id in pages) {
-            var thumbnail = pages[id].thumbnail;
-            var fullUrl = pages[id].fullurl;
-            if (thumbnail) {
-                wikiThumb = thumbnail.source;
-                wikiUrl = fullUrl;
-            }
-        }
-
-        if (wikiThumb) {
-            $("#authorThumb").html("<a href=" + wikiUrl + " target='_blank'><img src=" + wikiThumb + "></a>");
-            console.log(wikiThumb);
-        } else {
-            $("#authorThumb").html("<img src=" + wikiThumbPlaceholder + ">");
-        }
-
+        parseWiki(pages);
     });
 }
 
-function newQuote() {
+function tweetQuote() {
+    if (quote) {
+        tweetUrl = encodeURI("https://twitter.com/intent/tweet?via=BrandonEichler&text=\"" + quote + "\" - " + author);
+        window.open(tweetUrl, '_blank');
+    } else {
+        tweetUrl = encodeURI("https://twitter.com/intent/tweet?via=BrandonEichler&text=\"Obviously you're not a golfer.\" - The Dude");
+        window.open(tweetUrl, '_blank');
+    }
+}
+
+function buttonListeners() {
     $("#newQuote").click(function() {
-        requestQuote();
+        getQuote();
     });
-}
-
-$(document).ready(function() {
-    newQuote();
-    getWikiThumbnail();
+    $("#tweet").click(function() {
+        tweetQuote();
+    });
     $('.btn').mouseup(function() {
         this.blur()
     });
     $('.btn').mousedown(function() {
         this.blur()
     });
+}
+
+$(document).ready(function() {
+    buttonListeners();
 });

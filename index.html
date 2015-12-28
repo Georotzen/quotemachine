@@ -18,9 +18,6 @@
         <div class="title">
             Random Quote Machine
         </div>
-        <div>
-            <button id="newQuote" class="btn btn-default btn-lg">GET A NEW QUOTE!</button>
-        </div>
     </div>
     <div class="container main">
         <div class="text-area">
@@ -34,27 +31,31 @@
             </span>
         </div>
         <div class="thumb">
-            <span id="authorThumb"></span>
+            <span id="authorThumb">
+                <a href="https://en.wikipedia.org/wiki/The_Big_Lebowski" target="_blank">
+                    <img src="https://raw.githubusercontent.com/ShaggyTech/quotemachine/master/img/thedude.jpeg">
+                </a>
+            </span>
             <div id="thumbMenu">
                 <ul class="nav nav-pills nav-stacked">
                     <li>
-                        <a href="#">
+                        <a id="newQuote">
+                            <i class="fa fa-repeat fa-fw"></i> New Quote
+                        </a>
+                    </li>
+                    <li>
+                        <a id="wikiLink" href="https://en.wikipedia.org/wiki/The_Big_Lebowski" target="_blank">
                             <i class="fa fa-wikipedia-w fa-fw"></i> Author's Wikipedia
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a id="tweet" href="#" target="_blank">
                             <i class="fa fa-twitter fa-fw"></i> Tweet This Quote
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="https://github.com/ShaggyTech/quotemachine" target="_blank">
                             <i class="fa fa-github fa-fw"></i> Project Source
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-github-alt fa-fw"></i> Home Page
                         </a>
                     </li>
                 </ul>
