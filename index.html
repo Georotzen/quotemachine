@@ -1,49 +1,71 @@
 <!DOCTYPE html>
 <html>
-	<head>
 
-		<title>Brandon Eichler - Random Quotes</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+<head>
+    <title>Brandon Eichler - Random Quotes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <!-- CSS Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/quotemachine.css">
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
+</head>
 
-		<!-- CSS Style Sheets -->
-	    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	    <link rel="stylesheet" type="text/css" href="css/quotemachine.css">
+<body>
+    <div class="container title-container">
+        <div class="title">
+            Random Quote Machine
+        </div>
+        <div>
+            <button id="newQuote" class="btn btn-default btn-lg">GET A NEW QUOTE!</button>
+        </div>
+    </div>
+    <div class="container main">
+        <div class="text-area">
+            <span id="quote">
+                <i class="fa fa-quote-right fa-1x"></i> Obviously you’re not a golfer.
+                <i class="fa fa-quote-right fa-1x"></i>
+            </span>
+            <hr class="divider">
+            <span id="author">
+                The Dude
+            </span>
+        </div>
+        <div class="thumb">
+            <span id="authorThumb"></span>
+            <div id="thumbMenu">
+                <ul class="nav nav-pills nav-stacked">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-wikipedia-w fa-fw"></i> Author's Wikipedia
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-twitter fa-fw"></i> Tweet This Quote
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-github fa-fw"></i> Project Source
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-github-alt fa-fw"></i> Home Page
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- Javascript Files -->
+    <script type="text/javascript" src="javascript/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="javascript/quotemachine.js"></script>
+</body>
 
-	    <!-- Fonts -->
-	    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
-
-	</head>
-	
-	<body>
-
-		<div class="container">
-		    <div class="title">
-		        Random Quote Machine
-		    </div>
-		    <div>
-		        <button id="newQuote" class="btn btn-default btn-lg">GET A NEW QUOTE!</button>
-		    </div>
-		    <div class="main">
-		        <span id="quote">
-		            Obviously you’re not a golfer.
-		        </span>
-		        <hr class="divider">
-		        <span id="author">
-		            The Dude
-		        </span>
-		        <div class="thumb">
-		            <div id="authorThumb"></div>
-		            <div id="thumbMenu">
-		            </div>
-		        </div>
-		    </div>
-		</div>
-
-		<!-- Javascript Files -->
-	    <script type="text/javascript" src="javascript/jquery-2.1.4.min.js"></script>
-	    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	    <script type="text/javascript" src="javascript/quotemachine.js"></script>
-
-	</body>
 </html>
