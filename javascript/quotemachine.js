@@ -69,13 +69,8 @@ function getWiki(name) {
 }
 
 function tweetQuote() {
-    if (quote) {
-        tweetUrl = encodeURI("https://twitter.com/intent/tweet?via=BrandonEichler&text=\"" + quote + "\" - " + author);
-        window.open(tweetUrl, '_blank');
-    } else {
-        tweetUrl = encodeURI("https://twitter.com/intent/tweet?via=BrandonEichler&text=\"Obviously you're not a golfer.\" - The Dude");
-        window.open(tweetUrl, '_blank');
-    }
+    tweetUrl = encodeURI("https://twitter.com/intent/tweet?via=BrandonEichler&text=\"" + quote + "\" - " + author);
+    $("#tweet").attr("href", tweetUrl);
 }
 
 function buttonListeners() {
