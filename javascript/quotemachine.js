@@ -3,6 +3,7 @@ var author;
 var wikiThumb;
 var wikiAuthor;
 var wikiUrl;
+var tweetUrl = "https://twitter.com/intent/tweet?via=BrandonEichler&text=Obviously you're not a golfer. - The Dude";
 var wikiThumbPlaceholder = "https://raw.githubusercontent.com/ShaggyTech/quotemachine/master/img/person-placeholder.png";
 var animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
 
@@ -99,7 +100,9 @@ function getWiki(name) {
 }
 
 function tweetQuote() {
-    tweetUrl = encodeURI("https://twitter.com/intent/tweet?via=BrandonEichler&text=\"" + quote + "\" - " + author);
+    if (quote) {
+        tweetUrl = encodeURI("https://twitter.com/intent/tweet?via=BrandonEichler&text=\"" + quote + "\" - " + author);
+    }
     $("#tweet").attr("href", tweetUrl);
 }
 
