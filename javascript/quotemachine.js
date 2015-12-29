@@ -4,23 +4,37 @@ var wikiThumb;
 var wikiAuthor;
 var wikiUrl;
 var wikiThumbPlaceholder = "https://raw.githubusercontent.com/ShaggyTech/quotemachine/master/img/person-placeholder.png";
+var animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+
+function addQuote(q, a) {
+    $("#quote").addClass("animated fadeOutLeft").one(animationEnd, function() {
+        $(this).html('<i class="fa fa-quote-left fa-1x"></i>' + q + '<i class="fa fa-quote-right fa-1x"></i>');
+        $(this).removeClass("animated fadeOutLeft").addClass("animated fadeInRight").one(animationEnd, function() {
+            $(this).removeClass("animated fadeInRight");
+        });
+    });
+
+    $("#author").addClass("animated fadeOutRight").one(animationEnd, function() {
+        $(this).html(a);
+        $(this).removeClass("animated fadeOutRight").addClass("animated fadeInLeft").one(animationEnd, function() {
+            $(this).removeClass("animated fadeInLeft");
+        });
+    });
+}
 
 function parseQuote(response) {
     quote = response.quoteText;
     author = response.quoteAuthor;
-
     $("#wikiLink").removeClass("disabled")
 
-    if (author != "") {
-        getWiki(author);
-    } else {
+    if (author === "") {
         author = "Unknown Author";
         $("#authorThumb").html("<img src=" + wikiThumbPlaceholder + ">");
         $("#wikiLink").attr("href", "#").addClass("disabled");
     }
 
-    $("#quote").html('<i class="fa fa-quote-right fa-1x"></i>' + quote + '<i class="fa fa-quote-right fa-1x"></i>');
-    $("#author").html(author);
+    getWiki(author);
+    addQuote(quote, author);
 }
 
 function getQuote() {
@@ -40,16 +54,27 @@ function parseWiki(pages) {
         }
     }
 
-    if (wikiThumb && wikiUrl) {
-        $("#authorThumb").html("<a href=" + wikiUrl + " target='_blank'><img src=" + wikiThumb + "></a>");
-        $("#wikiLink").attr("href", wikiUrl);
-    } else if (wikiUrl) {
-        $("wikiLink").attr("href", wikiUrl);
-    } else {
-        $("#authorThumb").html("<img src=" + wikiThumbPlaceholder + ">");
-        $("#wikiLink").attr("href", "#").addClass("disabled");
-    }
+    $(".nav > li > a").addClass("disabled");
+
+    $("#authorThumb").addClass("animated fadeOutDown").one(animationEnd, function() {
+
+        if (wikiThumb && wikiUrl) {
+            $("#authorThumb").html("<a href=" + wikiUrl + " target='_blank'><img src=" + wikiThumb + "></a>");
+            $("#wikiLink").attr("href", wikiUrl);
+        } else if (wikiUrl) {
+            $("wikiLink").attr("href", wikiUrl);
+        } else {
+            $("#authorThumb").html("<img src=" + wikiThumbPlaceholder + ">");
+            $("#wikiLink").attr("href", "#").addClass("disabled");
+        }
+
+        $(this).removeClass("animated fadeOutDown").addClass("animated fadeInUp").one(animationEnd, function() {
+            $(this).removeClass("animated fadeInUp");
+        });
+        $(".nav > li > a").removeClass("disabled");
+    });
 }
+
 
 function getWiki(name) {
     wikiThumb = "";

@@ -30,13 +30,14 @@ body {
 
 #newQuote {
     color: white;
-    background: #3BAE43;
+    background: #0C7A13;
 }
 
 #newQuote:hover,
 #newQuote:focus {
-    background: white;
-    color: #3BAE43;
+    cursor: pointer;
+    background: #3BAE43;
+    color: white;
 }
 
 .main {
@@ -51,28 +52,38 @@ body {
     margin-bottom: 50px;
 }
 
-.divider {
-    border: 2px solid;
-    border-radius: 40%;
-    width: 50%;
+.text-area {
+    text-align: center;
+    overflow: hidden;
+    margin-top: 40px;
 }
 
 #quote {
     font-size: 28px;
-    padding-top: 20px;
+    height: 100px;
+    width: 100%;
+    display: block;
+    clear: both;
 }
 
 #quote i {
     padding: 0px 20px;
 }
 
+.divider {
+    color: #A2A0A0;
+    border: 2px solid;
+    border-radius: 40%;
+    width: 50%;
+}
+
 #author {
     font-style: italic;
     font-size: 34px;
-}
-
-.text-area {
-    text-align: center;
+    height: 50px;
+    width: 100%;
+    display: block;
+    clear: both;
 }
 
 .thumb {
@@ -83,6 +94,7 @@ body {
     align-items: center;
     -webkit-justify-content: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 #authorThumb img {
@@ -90,12 +102,14 @@ body {
     width: 200px;
     border-radius: 50%;
     border: 2px solid white;
+    display: block;
+    clear: both;
 }
 
 #thumbMenu {
-    border-left: 5px solid white;
-    margin-left: 10px;
-    padding-left: 10px;
+    border-left: 5px solid #A2A0A0;
+    margin-left: 25px;
+    padding-left: 25px;
 }
 
 .nav > li > a {
@@ -109,22 +123,28 @@ body {
     background: #2E8386;
 }
 
-@media (max-width: 500px) {
-    .main {
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.0);
-    }
-    .nav > li > a {
-        font-size: 12px;
-        padding: 5px;
-    }
-    #authorThumb img {
-        height: 125px;
-        width: 100px;
-    }
-}
-
 a.disabled {
     opacity: 0.2;
     pointer-events: none;
     cursor: default;
+}
+
+@media (max-width: 500px) {
+    .main {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.0);
+    }
+
+    #quote {
+        font-size: 18px;
+    }
+
+    .nav > li > a {
+        font-size: 18px;
+        padding: 5px;
+    }
+    
+    #authorThumb img {
+        height: 125px;
+        width: 125px;
+    }
 }
