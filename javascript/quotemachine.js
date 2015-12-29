@@ -58,20 +58,25 @@ function parseWiki(pages) {
 
     $("#authorThumb").addClass("animated fadeOutDown").one(animationEnd, function() {
 
-        if (wikiThumb && wikiUrl) {
-            $("#authorThumb").html("<a href=" + wikiUrl + " target='_blank'><img src=" + wikiThumb + "></a>");
-            $("#wikiLink").attr("href", wikiUrl);
-        } else if (wikiUrl) {
-            $("wikiLink").attr("href", wikiUrl);
+        if (wikiThumb) {
+            $(this).html("<a href=" + wikiUrl + " target='_blank'><img src=" + wikiThumb + "></a>");
         } else {
-            $("#authorThumb").html("<img src=" + wikiThumbPlaceholder + ">");
-            $("#wikiLink").attr("href", "#").addClass("disabled");
+            $(this).html("<img src=" + wikiThumbPlaceholder + ">");
+        }
+
+        if (wikiUrl) {
+            $("#wikiLink").attr("href", wikiUrl).addClass("no-disable");
+        } else {
+    
+            $("#wikiLink").attr("href", "#").removeClass("no-disable").addClass("disabled");
         }
 
         $(this).removeClass("animated fadeOutDown").addClass("animated fadeInUp").one(animationEnd, function() {
             $(this).removeClass("animated fadeInUp");
         });
-        $(".nav > li > a").removeClass("disabled");
+
+        $(".no-disable").removeClass("disabled");
+
     });
 }
 
