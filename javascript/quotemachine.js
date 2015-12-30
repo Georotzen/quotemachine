@@ -26,7 +26,12 @@ function addQuote(q, a) {
 function parseQuote(response) {
     quote = response.quoteText;
     author = response.quoteAuthor;
-    $("#wikiLink").removeClass("disabled")
+
+    if (quote.length > 125) {
+        console.log(quote);
+        console.log("quote too long!");
+        getQuote();
+    }
 
     if (author === "") {
         author = "Unknown Author";
@@ -36,6 +41,7 @@ function parseQuote(response) {
 
     getWiki(author);
     addQuote(quote, author);
+    tweetQuote(quote, author);
 }
 
 function getQuote() {
@@ -99,9 +105,9 @@ function getWiki(name) {
     });
 }
 
-function tweetQuote() {
-    if (quote) {
-        tweetUrl = encodeURI("https://twitter.com/intent/tweet?via=BrandonEichler&text=\"" + quote + "\" - " + author);
+function tweetQuote(q, a) {
+    if (q) {
+        tweetUrl = encodeURI("https://twitter.com/intent/tweet?via=BrandonEichler&text=\"" + q + "\" - " + a);
     }
     $("#tweet").attr("href", tweetUrl);
 }
@@ -109,9 +115,6 @@ function tweetQuote() {
 function buttonListeners() {
     $("#newQuote").click(function() {
         getQuote();
-    });
-    $("#tweet").click(function() {
-        tweetQuote();
     });
     $('.btn').mouseup(function() {
         this.blur()
