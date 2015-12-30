@@ -35,9 +35,9 @@ function parseQuote(response) {
         author = "Unknown Author";
     }
 
-    getWiki(author);                // gets wikipedia link and thumbnail image from author's wiki page
-    updateQuote(text, author);      // adds and animates the new quote onto the page
-    tweetQuote(text, author);       // updates the twitter share button with the new quote
+    getWiki(author); // gets wikipedia link and thumbnail image from author's wiki page
+    updateQuote(text, author); // adds and animates the new quote onto the page
+    tweetQuote(text, author); // updates the twitter share button with the new quote
 }
 
 // called from parseQuote()
@@ -64,7 +64,7 @@ function updateQuote(t, a) {
 function getWiki(name) {
     // The wikipedia API call we will use with the author's name as the title
     var apiUrl = encodeURI('//en.wikipedia.org/w/api.php?action=query&titles=' + name + '&prop=pageimages|info&piprop=thumbnail&inprop=url&format=jsonty&pithumbsize=500&utf8=&redirects&callback=?')
-    
+
     // resets the thumbnail and wikipedia URL because we are getting a new quote
     wikiThumb = "";
     wikiUrl = "";
@@ -110,12 +110,12 @@ function parseWiki(pages) {
         wikiUrl = "";
     }
 
-    updateWiki();   // updates the author's image and menu buttons
+    updateWiki(); // updates the author's image and menu buttons
 }
 
 // called from parseWiki()
 // updates the menu buttons and animates/updates the thumbnail image
-function updateWiki(){
+function updateWiki() {
     // disables the menu buttons 
     $(".nav > li > a").addClass("disabled");
 
@@ -135,7 +135,7 @@ function updateWiki(){
 
         if (wikiUrl) {
             $("#wikiLink").attr("href", wikiUrl).addClass("no-disable");
-        } else {  
+        } else {
             $("#wikiLink").attr("href", "#").removeClass("no-disable").addClass("disabled");
         }
 
