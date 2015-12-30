@@ -1,8 +1,27 @@
+<!--***************************************************************************************************   
+**  Random Quote Generator by Brandon Eichler
+**
+**  My portfolio:       http://shaggytech.github.io/portfolio/
+**
+**  Project made for the freecodecamp.com Zipline: Build a Random Quote Machine
+**  Zipline Info:       http://www.freecodecamp.com/challenges/zipline-build-a-random-quote-machine
+**
+**  Project Page:       http://shaggytech.github.io/quotemachine/
+**  Project Source:     https://github.com/ShaggyTech/quotemachine
+**
+**  Credits
+**
+**  animate.css:        https://daneden.github.io/animate.css/         
+**  Wikipedia API:      https://www.mediawiki.org/wiki/API:Main_page
+**  Forismatic API:     http://forismatic.com/en/api/
+****************************************************************************************************-->
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Brandon Eichler - Random Quotes</title>
+    <title>Brandon Eichler - Zipline: Build a Random Quote Machine</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
     <!-- CSS Style Sheets -->
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -15,15 +34,20 @@
 </head>
 
 <body>
+    <!-- Page Title -->
     <div class="container title-container">
         <div class="title">
             Random Quote Machine
         </div>
     </div>
+    <!-- END Page Title -->
+    <!-- Main -->
     <div class="container main">
-        <div class="text-area">
-            <span id="quote">
-                <i class="fa fa-quote-right fa-1x"></i> Obviously you’re not a golfer.
+        <!-- Quote -->
+        <div class="quote">
+            <span id="text">
+                <i class="fa fa-quote-right fa-1x"></i> 
+                Obviously you’re not a golfer.
                 <i class="fa fa-quote-right fa-1x"></i>
             </span>
             <hr class="divider">
@@ -31,13 +55,18 @@
                 The Dude
             </span>
         </div>
-        <div class="thumb">
+        <!-- END Quote -->
+        <!-- Bottom -->
+        <div class="bottom">
+            <!-- Author Thumbnail -->
             <span id="authorThumb">
                 <a href="https://en.wikipedia.org/wiki/The_Big_Lebowski" target="_blank">
                     <img src="https://raw.githubusercontent.com/ShaggyTech/quotemachine/master/img/thedude.jpeg">
                 </a>
             </span>
-            <div id="thumbMenu">
+            <!-- END Author Thumbnail -->
+            <!-- Menu -->
+            <div id="menu">
                 <ul class="nav nav-pills nav-stacked">
                     <li>
                         <a id="newQuote" class="no-disable">
@@ -61,8 +90,11 @@
                     </li>
                 </ul>
             </div>
+            <!-- END Menu-->
         </div>
+        <!-- END Bottom -->
     </div>
+    <!-- END Main -->
     
     <!-- Javascript Files -->
     <script type="text/javascript" src="javascript/jquery-2.1.4.min.js"></script>
