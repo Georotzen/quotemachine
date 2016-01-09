@@ -164,6 +164,9 @@ function buttonListeners() {
         getQuote();
     });
 
+    $("#blank").click(function(event){
+        event.stopPropagation();
+    });
     // these are used to remove the hover styling from the buttons after clicking on them
     $('.nav > li > a').mouseup(function() {
         this.blur()
