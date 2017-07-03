@@ -14,7 +14,7 @@ var animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimation
 function getQuote() {
     $.ajax({
         dataType: "jsonp",
-        url: "http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=parseQuote",
+        url: "https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=parseQuote",
         // "jsonp=parseQuote" is the callback function to run, i.e parseQuote()
     })
 }
