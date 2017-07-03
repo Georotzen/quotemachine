@@ -12,11 +12,16 @@ var animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimation
 
 // Gets a new quote whenever #newQuote button is clicked
 function getQuote() {
-    $.ajax({
-        dataType: "jsonp",
-        url: "https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=parseQuote",
-        // "jsonp=parseQuote" is the callback function to run, i.e parseQuote()
-    })
+    
+    var url = "https://api.forismatic.com/api/1.0/?method=getQuote&&lang=en&format=jsonp&jsonp=?";
+    
+    
+    
+    $.getJSON(url).done(parseQuote).fail(handleErr);
+}
+
+function handleErr(jqxhr, textStatus, err) {
+  console.log("Request Failed: " + textStatus + ", " + err);
 }
 
 // called from getQuote()
